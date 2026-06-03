@@ -46,7 +46,20 @@ function initPreloader() {
   const progressBar = document.getElementById('progress-bar');
   const loaderCounter = document.getElementById('loader-counter');
   
-  const requiredInitialFrames = 35; // Unlock site early
+  // Only require the very first 2 frames to unlock the site. 
+  // The rest of the 192 frames will quietly load in the background.
+  const requiredInitialFrames = 2; 
+  let isSiteUnlocked = false;
+
+  const unlockSite = () => {
+    if (!isSiteUnlocked) {
+      isSiteUnlocked = true;
+      onLoadingComplete();
+    }
+  };
+
+  // Ultimate safety fallback: NEVER let the loader hang more than 3 seconds in production.
+  setTimeout(unlockSite, 3000);
 
   // Preload frames sequentially
   for (let i = 1; i <= totalFrames; i++) {
@@ -57,8 +70,8 @@ function initPreloader() {
       
       if (loadedCount <= requiredInitialFrames) {
         const percentage = Math.round((loadedCount / requiredInitialFrames) * 100);
-        progressBar.style.width = `${percentage}%`;
-        loaderCounter.innerText = `${percentage}%`;
+        if (progressBar) progressBar.style.width = `${percentage}%`;
+        if (loaderCounter) loaderCounter.innerText = `${percentage}%`;
       }
       
       // Draw first frame immediately once loaded to prevent blank screen
@@ -66,15 +79,15 @@ function initPreloader() {
         drawFrame(0);
       }
       
-      if (loadedCount === requiredInitialFrames) {
-        onLoadingComplete();
+      if (loadedCount >= requiredInitialFrames) {
+        unlockSite();
       }
     };
 
     img.onerror = () => {
       loadedCount++;
-      if (loadedCount === requiredInitialFrames) {
-        onLoadingComplete();
+      if (loadedCount >= requiredInitialFrames) {
+        unlockSite();
       }
     };
 

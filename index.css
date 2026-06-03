@@ -1487,6 +1487,12 @@ body.loading {
 
 @media (max-width: 768px) {
   html { font-size: 14px; }
+  
+  /* Preloader Text Fixes */
+  #preloader { padding: 0 20px; text-align: center; }
+  .loader-brand { font-size: 2.2rem; letter-spacing: 0.2em; text-indent: 0; text-align: center; }
+  .loader-sub { font-size: 0.65rem; letter-spacing: 0.2em; text-indent: 0; text-align: center; line-height: 1.5; margin-bottom: 30px; }
+
   .story-section { padding: 0 5%; }
   #chapter-hero { padding-top: 80px; }
   .story-card { padding: 30px 20px; }
