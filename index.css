@@ -1418,33 +1418,43 @@ body.loading {
   .luxury-navbar { width: 95%; padding: 0 25px; }
   
   .nav-links {
-    display: none;
+    display: flex !important;
     flex-direction: column;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(4, 4, 4, 0.98);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     z-index: 999;
+    
+    /* Dropdown closed state */
+    max-height: 0;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    visibility: hidden;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
   }
 
   .nav-links.mobile-active {
-    display: flex !important;
+    max-height: 350px;
     opacity: 1;
+    visibility: visible;
+    padding: 25px 0;
   }
 
   .nav-links a {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-10px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
 
@@ -1453,11 +1463,11 @@ body.loading {
     transform: translateY(0);
   }
 
-  .nav-links.mobile-active li:nth-child(1) a { transition-delay: 0.1s; }
-  .nav-links.mobile-active li:nth-child(2) a { transition-delay: 0.15s; }
-  .nav-links.mobile-active li:nth-child(3) a { transition-delay: 0.2s; }
-  .nav-links.mobile-active li:nth-child(4) a { transition-delay: 0.25s; }
-  .nav-links.mobile-active li:nth-child(5) a { transition-delay: 0.3s; }
+  .nav-links.mobile-active li:nth-child(1) a { transition-delay: 0.15s; }
+  .nav-links.mobile-active li:nth-child(2) a { transition-delay: 0.20s; }
+  .nav-links.mobile-active li:nth-child(3) a { transition-delay: 0.25s; }
+  .nav-links.mobile-active li:nth-child(4) a { transition-delay: 0.30s; }
+  .nav-links.mobile-active li:nth-child(5) a { transition-delay: 0.35s; }
 
   .mobile-menu-toggle { display: flex; }
   .nav-cta { display: none; }
