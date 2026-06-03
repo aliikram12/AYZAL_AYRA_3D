@@ -46,9 +46,6 @@ function initPreloader() {
   const progressBar = document.getElementById('progress-bar');
   const loaderCounter = document.getElementById('loader-counter');
   
-  // Only require the very first 2 frames to unlock the site. 
-  // The rest of the 192 frames will quietly load in the background.
-  const requiredInitialFrames = 2; 
   let isSiteUnlocked = false;
 
   const unlockSite = () => {
@@ -58,39 +55,46 @@ function initPreloader() {
     }
   };
 
-  // Ultimate safety fallback: NEVER let the loader hang more than 3 seconds in production.
-  setTimeout(unlockSite, 3000);
+  // 1. Cinematic Artificial Loader (0 to 100% over 2.5 seconds)
+  let currentProgress = 0;
+  const loadingDuration = 2500; // 2.5 seconds total loading time
+  const fps = 30;
+  const intervalTime = 1000 / fps;
+  const progressStep = 100 / (loadingDuration / intervalTime);
 
-  // Preload frames sequentially
+  const loaderInterval = setInterval(() => {
+    // Add some random easing to make it look realistic and organic
+    const randomBoost = Math.random() * progressStep * 1.5;
+    currentProgress += progressStep + randomBoost;
+
+    if (currentProgress >= 100) {
+      currentProgress = 100;
+      clearInterval(loaderInterval);
+      
+      // Update DOM to 100%
+      if (progressBar) progressBar.style.width = `100%`;
+      if (loaderCounter) loaderCounter.innerText = `100%`;
+      
+      // Small delay before unlocking for visual impact
+      setTimeout(unlockSite, 200);
+    } else {
+      if (progressBar) progressBar.style.width = `${Math.floor(currentProgress)}%`;
+      if (loaderCounter) loaderCounter.innerText = `${Math.floor(currentProgress)}%`;
+    }
+  }, intervalTime);
+
+  // 2. Load images silently in the background
   for (let i = 1; i <= totalFrames; i++) {
     const img = new Image();
     
     img.onload = () => {
       loadedCount++;
-      
-      if (loadedCount <= requiredInitialFrames) {
-        const percentage = Math.round((loadedCount / requiredInitialFrames) * 100);
-        if (progressBar) progressBar.style.width = `${percentage}%`;
-        if (loaderCounter) loaderCounter.innerText = `${percentage}%`;
-      }
-      
-      // Draw first frame immediately once loaded to prevent blank screen
+      // Draw first frame immediately to prevent blank screen
       if (i === 1) {
         drawFrame(0);
       }
-      
-      if (loadedCount >= requiredInitialFrames) {
-        unlockSite();
-      }
     };
-
-    img.onerror = () => {
-      loadedCount++;
-      if (loadedCount >= requiredInitialFrames) {
-        unlockSite();
-      }
-    };
-
+    
     img.src = frameUrl(i);
     images.push(img);
   }
