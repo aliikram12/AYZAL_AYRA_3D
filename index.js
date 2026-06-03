@@ -582,6 +582,26 @@ function initEventListeners() {
     if (lenis) lenis.scrollTo('#collections-section');
   });
 
+  // Mobile Menu Toggle
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('active');
+      navLinks.classList.toggle('mobile-active');
+    });
+
+    // Close mobile menu when a link is clicked
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileToggle.classList.remove('active');
+        navLinks.classList.remove('mobile-active');
+      });
+    });
+  }
+
   // Menu quick-links smooth scrolling
   document.getElementById('link-home').addEventListener('click', (e) => {
     e.preventDefault();
