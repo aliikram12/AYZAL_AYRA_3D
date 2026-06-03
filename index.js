@@ -45,6 +45,8 @@ const frameUrl = (index) => `Fram Pictures/ffout${String(index).padStart(3, '0')
 function initPreloader() {
   const progressBar = document.getElementById('progress-bar');
   const loaderCounter = document.getElementById('loader-counter');
+  
+  const requiredInitialFrames = 35; // Unlock site early
 
   // Preload frames sequentially
   for (let i = 1; i <= totalFrames; i++) {
@@ -52,23 +54,26 @@ function initPreloader() {
     
     img.onload = () => {
       loadedCount++;
-      const percentage = Math.round((loadedCount / totalFrames) * 100);
-      progressBar.style.width = `${percentage}%`;
-      loaderCounter.innerText = `${percentage}%`;
+      
+      if (loadedCount <= requiredInitialFrames) {
+        const percentage = Math.round((loadedCount / requiredInitialFrames) * 100);
+        progressBar.style.width = `${percentage}%`;
+        loaderCounter.innerText = `${percentage}%`;
+      }
       
       // Draw first frame immediately once loaded to prevent blank screen
       if (i === 1) {
         drawFrame(0);
       }
       
-      if (loadedCount === totalFrames) {
+      if (loadedCount === requiredInitialFrames) {
         onLoadingComplete();
       }
     };
 
     img.onerror = () => {
       loadedCount++;
-      if (loadedCount === totalFrames) {
+      if (loadedCount === requiredInitialFrames) {
         onLoadingComplete();
       }
     };
