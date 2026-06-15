@@ -38,153 +38,24 @@
     </div>
   </nav>
 
-  <!-- Canvas Container (Fixed Background) -->
-  <div class="canvas-container" id="canvas-container">
-    <canvas id="perfume-canvas"></canvas>
-    <canvas id="particles-canvas"></canvas>
-    <div class="canvas-overlay-glow" id="ambient-glow"></div>
-  </div>
-
-  <!-- Audio Controller Widget -->
-  <div class="audio-controller" id="audio-btn">
-    <div class="audio-icon">
-      <div class="audio-waves">
-        <div class="audio-wave-bar"></div>
-        <div class="audio-wave-bar"></div>
-        <div class="audio-wave-bar"></div>
-        <div class="audio-wave-bar"></div>
+  <!-- Hero Banner with Video Background -->
+  <section class="video-hero-section">
+    <video autoplay muted loop playsinline class="hero-bg-video">
+      <source src="https://res.cloudinary.com/dgbtufbaz/video/upload/v1781529964/Perfume_commercial_video_production_202606011241_fycirc.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-content">
+      <span class="story-chapter-label">AYZAL AYRA</span>
+      <h1 class="story-title">GOLDEN AURA</h1>
+      <p class="story-description">"Luxury That Stays With You"<br>Crafted for those who command attention without saying a word.</p>
+      <div class="button-group">
+        <button class="btn-primary whatsapp-trigger" data-product="Golden Aura">Order via WhatsApp</button>
+        <button class="btn-secondary" id="cta-explore-hero">Explore Collection</button>
       </div>
     </div>
-    <span class="audio-label" id="audio-text">Mute Experience</span>
-  </div>
+  </section>
 
-  <!-- Scroll Down Indicator -->
-  <div class="scroll-indicator" id="scroll-indicator">
-    <span class="scroll-text">Scroll to reveal</span>
-    <div class="scroll-line-container">
-      <div class="scroll-line-fill"></div>
-    </div>
-  </div>
-
-  <!-- Scroll-Driven Storytelling Overlays (Chapters 1-5 + Final Hero) -->
-  <div class="story-scroll-container">
-
-    <!-- Section 01: Hero Introduction -->
-    <section class="story-section" id="chapter-hero">
-      <div class="hero-bottle-wrapper" id="hero-bottle-container">
-        <div class="hero-bottle-glow"></div>
-        <img src="Botels/1.png" alt="Golden Aura Flagship" class="hero-floating-bottle" id="hero-bottle">
-      </div>
-      <div class="story-card hero-card">
-        <span class="story-chapter-label">AYZAL AYRA</span>
-        <h1 class="story-title">GOLDEN AURA</h1>
-        <p class="story-description">"Luxury That Stays With You"<br>Crafted for those who command attention without
-          saying a word.</p>
-        <div class="button-group">
-          <button class="btn-primary whatsapp-trigger" data-product="Golden Aura">Order via WhatsApp</button>
-          <button class="btn-secondary" id="hero-discover-btn">Watch Experience</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 02: Closed Luxury Box -->
-    <section class="story-section" id="chapter-2">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter I &bull; The Vault</span>
-        <h2 class="story-title">Anticipation</h2>
-        <p class="story-description">Encased in darkness, waiting to be revealed. The very presence of the box speaks
-          volumes.</p>
-      </div>
-    </section>
-
-    <!-- Section 03: Box Opening -->
-    <section class="story-section" id="chapter-3">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter II &bull; The Unveiling</span>
-        <h2 class="story-title">Light touches gold</h2>
-        <p class="story-description">A cinematic moment as the seal is broken. True luxury doesn't rush; it commands the
-          pace.</p>
-      </div>
-    </section>
-
-    <!-- Section 04: Bottle Reveal -->
-    <section class="story-section" id="chapter-4">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter III &bull; The Reveal</span>
-        <h2 class="story-title">A masterpiece emerges</h2>
-        <p class="story-description">Heavy, ray-traced glass reflecting pure warmth. The vessel is as extraordinary as
-          the essence it holds.</p>
-      </div>
-    </section>
-
-    <!-- Section 05: Bottle Rising -->
-    <section class="story-section" id="chapter-5">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter IV &bull; Ascension</span>
-        <h2 class="story-title">Rising to the occasion</h2>
-        <p class="story-description">Suspended in an aura of pure prestige. Golden Aura ascends, ready to become your
-          signature.</p>
-      </div>
-    </section>
-
-    <!-- Section 06: Luxury Bottle Showcase -->
-    <section class="story-section" id="chapter-6">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter V &bull; The Artifact</span>
-        <h2 class="story-title">Perfected form</h2>
-        <p class="story-description">Every curve, every micro-engraving, meticulously designed for those who appreciate
-          ultimate craftsmanship.</p>
-      </div>
-    </section>
-
-    <!-- Section 07: Cap Removal -->
-    <section class="story-section" id="chapter-7">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter VI &bull; The Invitation</span>
-        <h2 class="story-title">Release the essence</h2>
-        <p class="story-description">The magnetic cap lifts. A moment of silence before the atmosphere is forever
-          changed.</p>
-      </div>
-    </section>
-
-    <!-- Section 08: Perfume Spray -->
-    <section class="story-section" id="chapter-8">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter VII &bull; The Dispersion</span>
-        <h2 class="story-title">A slow-motion mist</h2>
-        <p class="story-description">Saffron, Madagascar Vanilla, and warm Amberwood atomized into a perfect, lingering
-          cloud.</p>
-      </div>
-    </section>
-
-    <!-- Section 09: Golden Aura Expansion -->
-    <section class="story-section" id="chapter-9">
-      <div class="story-card">
-        <span class="story-chapter-label">Chapter VIII &bull; The Expansion</span>
-        <h2 class="story-title">Invisible Armor</h2>
-        <p class="story-description">The aura expands, wrapping you in confidence. It precedes your entrance and lingers
-          long after you depart.</p>
-      </div>
-    </section>
-
-    <!-- Section 10: Final Product Hero -->
-    <section class="story-section" id="chapter-10">
-      <div class="story-card final-card">
-        <span class="story-chapter-label">The Icon &bull; Established</span>
-        <h2 class="story-title">GOLDEN AURA</h2>
-        <p class="story-description">The final form. An unforgettable sensory signature for the modern elite.</p>
-        <div class="button-group">
-          <button class="btn-primary whatsapp-trigger" data-product="Golden Aura">Order Now</button>
-          <button class="btn-secondary" id="final-explore-btn">Explore Collection</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 11: Transition Section -->
-    <section class="story-section" id="chapter-transition">
-      <!-- Empty buffer space for fading the canvas -->
-    </section>
-
+  <div class="main-content">
     <!-- SECTION 3: SIGNATURE COLLECTION (3-Column Row) -->
     <section class="experience-section" id="collections-section">
       <div class="section-intro">

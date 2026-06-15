@@ -442,7 +442,7 @@ body.loading {
 
 /* Section Heights & Triggers */
 #chapter-hero {
-  height: 100vh;
+  height: 200vh;
   justify-content: center;
   align-items: flex-start;
   padding-top: 160px;
@@ -524,24 +524,53 @@ body.loading {
   letter-spacing: 0.03em;
 }
 
-/* Hero Section specifics */
-#chapter-hero .hero-card {
+/* Hero Banner with Video Background */
+.video-hero-section {
+  position: relative;
+  width: 100%;
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Black color overlay as requested */
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
   text-align: center;
   max-width: 800px;
-  background: transparent;
-  border: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: none;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 1;
-  transform: none;
-  z-index: 10;
+  padding-top: 50px;
 }
 
-#chapter-hero .story-title {
+.hero-content .story-title {
+  font-family: var(--font-serif);
   font-size: 5.6rem;
   letter-spacing: 0.25em;
   text-indent: 0.25em;
@@ -554,14 +583,19 @@ body.loading {
   text-shadow: var(--gold-glow);
 }
 
-#chapter-hero .story-chapter-label {
+.hero-content .story-chapter-label {
   letter-spacing: 0.6em;
   text-indent: 0.6em;
   margin-bottom: 25px;
   font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: inline-block;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
-#chapter-hero .story-description {
+.hero-content .story-description {
   font-size: 1.15rem;
   max-width: 580px;
   color: var(--color-text-secondary);
@@ -570,6 +604,8 @@ body.loading {
   background: rgba(4, 4, 4, 0.55);
   border-radius: 30px;
   backdrop-filter: blur(5px);
+  font-weight: 300;
+  line-height: 1.85;
 }
 
 /* Large Floating Hero Bottle */
