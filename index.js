@@ -384,10 +384,13 @@ function initEventListeners() {
 
   // Menu quick-links smooth scrolling
   const linkHome = document.getElementById('link-home');
-  if (linkHome) linkHome.addEventListener('click', (e) => { e.preventDefault(); if (lenis) lenis.scrollTo('.video-hero-section'); });
+  if (linkHome) linkHome.addEventListener('click', (e) => { e.preventDefault(); if (lenis) lenis.scrollTo('#chapter-hero'); });
   
   const linkCollections = document.getElementById('link-collections');
   if (linkCollections) linkCollections.addEventListener('click', (e) => { e.preventDefault(); if (lenis) lenis.scrollTo('#collections-section'); });
+  
+  const linkExperience = document.getElementById('link-experience');
+  if (linkExperience) linkExperience.addEventListener('click', (e) => { e.preventDefault(); if (lenis) lenis.scrollTo('#experience-section'); });
   
   const linkCraftsmanship = document.getElementById('link-craftsmanship');
   if (linkCraftsmanship) linkCraftsmanship.addEventListener('click', (e) => { e.preventDefault(); if (lenis) lenis.scrollTo('#brandstory-section'); });

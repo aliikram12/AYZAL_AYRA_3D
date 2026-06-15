@@ -215,6 +215,9 @@ body.loading {
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-serif);
   font-size: 1.5rem;
   letter-spacing: 0.2em;
@@ -225,16 +228,28 @@ body.loading {
   transition: var(--transition-fast);
 }
 
+.nav-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
 .nav-brand:hover {
   color: var(--color-champagne);
   text-shadow: var(--gold-glow);
 }
 
 .nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 30px;
+  gap: 15px;
 }
 
 .nav-links a {
@@ -528,7 +543,7 @@ body.loading {
 .video-hero-section {
   position: relative;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -538,12 +553,12 @@ body.loading {
 
 .hero-bg-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: translate(-50%, -50%);
+  object-position: center center;
   z-index: 1;
 }
 
@@ -566,7 +581,6 @@ body.loading {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
 }
 
 .hero-content .story-title {
@@ -599,7 +613,6 @@ body.loading {
   font-size: 1.15rem;
   max-width: 580px;
   color: var(--color-text-secondary);
-  margin-bottom: 40px;
   padding: 15px 30px;
   background: rgba(4, 4, 4, 0.55);
   border-radius: 30px;
@@ -1459,6 +1472,7 @@ body.loading {
     position: absolute;
     top: 100%;
     left: 0;
+    transform: none;
     width: 100%;
     margin-top: 15px;
     background: rgba(10, 10, 10, 0.95);
@@ -1508,7 +1522,7 @@ body.loading {
   .mobile-menu-toggle { display: flex; }
   .nav-cta { display: none; }
 
-  .video-hero-section { height: 100vh; }
+  .video-hero-section { height: 80vh; }
   .signature-collection-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
   .editorial-grid { grid-template-columns: 1fr; gap: 40px; }
   .editorial-img-block { height: 400px; }
@@ -1530,7 +1544,7 @@ body.loading {
   .loader-sub { font-size: 0.65rem; letter-spacing: 0.2em; text-indent: 0; text-align: center; line-height: 1.5; margin-bottom: 30px; }
 
   .story-section { padding: 0 5%; }
-  .video-hero-section { height: 100vh; }
+  .video-hero-section { height: 70vh; }
   .story-card { padding: 30px 20px; }
   .story-title { font-size: 2.2rem; }
   
